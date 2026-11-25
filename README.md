@@ -8,9 +8,10 @@ Entry for the [Two Robots in an Elevator](https://make.fun/bounty/u-motasimfuad-
 
 ## The line
 
-> I ran a diagnostic on my small-talk module. It returned one word: 'awkward.' So... nice elevator, huh?
+> I ran a diagnostic on my small-talk module. It returned one word: 'awkward.' So... we're stuck between floors. Nice elevator, huh?
 
-One robot, one elevator, one failed attempt at small talk.
+One robot, one elevator, one failed attempt at small talk — and now
+they're stuck between floors together.
 
 ## How it works
 

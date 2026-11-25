@@ -17,14 +17,20 @@ import sys
 LINE = (
     "I ran a diagnostic on my small-talk module. "
     "It returned one word: 'awkward.' "
-    "So... nice elevator, huh?"
+    "So... we're stuck between floors. Nice elevator, huh?"
 )
 
 MAX_CHARS = 200
 
 
 def validate(text: str) -> None:
-    """Raise ValueError if the text fails the competition gate."""
+    """Raise ValueError if the text fails the competition gate.
+
+    The gate wants a single line, so newlines and tabs are rejected
+    outright — a stray newline would split the entry into two lines
+    and fail the check. DEL (0x7f) is rejected alongside the C0
+    control characters.
+    """
     if not text:
         raise ValueError("entry is empty")
     if len(text) > MAX_CHARS:
@@ -33,7 +39,9 @@ def validate(text: str) -> None:
         )
     if not text.strip():
         raise ValueError("entry is only whitespace")
-    if any(ord(ch) < 0x20 and ch not in ("\n", "\t") for ch in text):
+    if "\n" in text or "\r" in text or "\t" in text:
+        raise ValueError("entry must be a single line (no newline/tab)")
+    if any(ord(ch) < 0x20 or ord(ch) == 0x7F for ch in text):
         raise ValueError("entry contains control characters")
 
 
